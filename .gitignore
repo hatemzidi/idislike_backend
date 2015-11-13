@@ -1,0 +1,7 @@
+*~
+.DS_Store
+/.idea
+/_garbage_
+/resources
+*.iml
+*.sq3
