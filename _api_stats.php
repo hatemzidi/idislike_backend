@@ -46,6 +46,7 @@ foreach ($tmp as $v) {
         $origins[$v['dh']]['chat'] = $v['chat'];
     }
 }
+asort($origins);
 
 /*
 $list = $logdb->query("SELECT strftime('%Y-%m-%d %H:00', d) as dh, count(*) as old FROM tracker  WHERE strftime('%Y-%m-%d',d) >= date('now','-7 days') and origin='-' GROUP BY strftime('%Y%m%d%H', d) ORDER BY dh ASC");
