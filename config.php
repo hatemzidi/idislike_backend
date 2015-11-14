@@ -6,7 +6,7 @@
  * Time: 20:43
  */
 
-$mode = "dev"; // dev | prod
+$mode = "prod"; // dev | prod
 
 // config
 
@@ -16,8 +16,8 @@ if ($mode == 'dev') {
   error_reporting(E_ALL ^ E_NOTICE);
   ini_set('display_errors', 1);
 } else {
-  $dbfolder = $_SERVER["DOCUMENT_ROOT"] . "/data/";
-  $dbGeofolder = $_SERVER['DOCUMENT_ROOT'];
+  $dbfolder = $_SERVER["DOCUMENT_ROOT"] . "/backend/data/";
+  $dbGeofolder = $_SERVER['DOCUMENT_ROOT'] . "/backend";
 }
 
 header('Access-Control: allow *');

@@ -7,8 +7,19 @@
  *
  */
 
+// no-cache headers - complete set
+header("Expires: Sat, 01 Jan 1980 00:00:00 GMT"); // Some time in the past
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
-header("Content-Type: image/gif");
+// image related headers
+header('Accept-Ranges: bytes');
+header('Content-Length: ' . filesize( dirname(__FILE__) . '/blank.gif') ); // How many bytes we're going to send
+header('Content-Type: image/gif');
+
+
 
 // configs & imports
 require_once 'config.php';
@@ -59,6 +70,7 @@ $longitude = isset($record->location) ? $record->location->longitude : '0';
 
 // and boom ...
 $logdb->exec("UPDATE hits SET counter=counter+1 WHERE id=1");
+
 // track it!
 $logdb->exec("INSERT INTO tracker(browser, ip, referrer, iso_code, country_name, city_name, latitude, longitude, origin)
               VALUES ('$browser','$ip', '$referrer', '$iso_code', '$country_name', '$city_name', '$latitude', '$longitude', '$origin')
@@ -70,5 +82,5 @@ $logdb = null;
 $ipReader->close();
 
 // fake image
-echo file_get_contents(dirname(__FILE__) . '/images/blank.gif');
+echo file_get_contents(dirname(__FILE__) . '/blank.gif');
 ?>
