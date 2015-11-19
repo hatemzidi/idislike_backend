@@ -57,17 +57,19 @@ $app->get('/counters', function () {
     foreach ($list->fetchAll(PDO::FETCH_ASSOC) as $item) {
 //        echo $item['browser'];
         $agent->setUserAgent($item['browser']);
+        $browser = $agent->browser();
+        $platform = $agent->platform();
 
 //        echo $agent->platform();
 //        echo $agent->browser();
 
-        $key = !empty($agent->browser()) ? $agent->browser() : 'unkwn';
+        $key = !empty($browser) ? $browser : 'unkwn';
         if (!array_key_exists($key, $br)) {
             $br[$key] = 0;
         }
         $br[$key] += $item['c'];
 
-        $key = !empty($agent->platform()) ? $agent->platform() : 'unkwn';
+        $key = !empty($platform) ? $platform : 'unkwn';
 
         if (!array_key_exists($key, $os)) {
             $os[$key] = 0;
