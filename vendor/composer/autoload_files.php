@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    $vendorDir . '/danielstjules/stringy/src/Create.php',
+    $vendorDir . '/illuminate/support/helpers.php',
     $vendorDir . '/geoip/geoip/src/geoip.inc',
     $vendorDir . '/geoip/geoip/src/geoipcity.inc',
     $vendorDir . '/geoip/geoip/src/timezone.php',
